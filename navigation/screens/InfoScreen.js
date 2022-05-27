@@ -5,7 +5,7 @@ export default function InfoScreen({ navigation }) {
     return(
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text
-                onPress={() => navigation.navigate('Email')}
+                onPress={() => navigation.navigate('E-mail')}
                 style={{ fontSize: 26, fontWeight: 'bold' }}>Info Scherm</Text>
         </View>
     )

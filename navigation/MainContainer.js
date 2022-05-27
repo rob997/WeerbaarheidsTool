@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
@@ -18,46 +19,59 @@ const infoName = 'Info';
 const Tab = createBottomTabNavigator();
 
 
-export default function MainContainer(){
+export default function MainContainer() {
     return(
         <NavigationContainer>
             <Tab.Navigator
                 initialRouteName={emailName}
-                screenOptions={({route}) => ({
-                    tabBarIcon: ({focused, color, size}) => {
-                        let iconName;
-                        let rn = route.name;
-
-                        if (rn === emailName) {
-                            iconName = focused ? 'mail' : 'mail-outline';
-                        } else if (rn === pwName) {
-                            iconName = focused ? 'key' : 'key-outline';
-                        } else if (rn === infoName) {
-                            iconName = focused ? 'information' : 'information-circle-outline';
-                        }
-
-                        return <Ionicons name={iconName} size={size} color={color} />
-                    
+                screenOptions={{
+                    tabBarActiveTintColor: "tomato",
+                    tabBarInactiveTintColor: "grey",
+                    tabBarLabelStyle: {
+                        paddingBottom: 10,
+                        fontSize: 10
+                },
+                tabBarStyle: [
+                    {
+                        display: "flex"
                     },
-                })}
-
-                tabBarOptions={{
-                    activeTintColor: 'tomato',
-                    inactiveTintColor: 'grey',
-                    labelStyle: { paddingBottom: 10, fontSize: 10}
-                    
+                    null
+                ]         
                 }}
-
             >
 
-                <Tab.Screen name={emailName} component={EmailCheck}/>
-                <Tab.Screen name={pwName} component={PasswordCheck}/>
-                <Tab.Screen name={infoName} component={InfoScreen}/>
-
-
-
+            <Tab.Screen
+                name={emailName}
+                component={EmailCheck}
+                options={{
+                tabBarLabel: 'Email',
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="mail-outline" color={color} size={size} />
+                ),
+                }}
+            />
+            <Tab.Screen
+                name={pwName}
+                component={PasswordCheck}
+                options={{
+                tabBarLabel: 'Wachtwoord',
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="key-outline" color={color} size={size} />
+                ),
+                //tabBarBadge: 3,
+                }}
+            />
+            <Tab.Screen
+                name={infoName}
+                component={InfoScreen}
+                options={{
+                tabBarLabel: 'Beveiliginstips',
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="information-circle-outline" color={color} size={size} />
+                ),
+                }}
+            />
             </Tab.Navigator>
-
         </NavigationContainer>
-    )
+  );
 }
