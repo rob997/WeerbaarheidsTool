@@ -1,21 +1,32 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { TextInput } from 'react-native-web';
+import { View, Text, TextInput, KeyboardAvoidingView} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import styles from '../styles/styles.js'
 
 export default function EmailCheck({ navigation }) {
     return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text
-                onPress={() => alert('This is the "Email" screen.')}
-                style={{ backgroundColor: 'tomato', fontSize: 18, fontWeight: 'bold', justifyContent: 'space-between'}}>Hier kunt u testen of uw e-mailadres is getroffen door een hack op een database.</Text>
-            <View>
-                
-            </View>
-            <View>
+        <View style={styles.mainview}>
+
+            <View style={styles.titleview}>
                 <Text
-                style={{ fontSize: 20, fontWeight: 'bold', paddingTop: 50 }}>View inside a view!</Text>
+                onPress={() => alert('This is the "Email" screen.')}
+                style={styles.title}>
+                    Hier kunt u testen of uw e-mailadres is getroffen door een hack op een database.</Text>
             </View>
+
+            <View style={styles.inputview}>
+                <Text>Vul hier uw email in:</Text>
+                <TextInput
+                style={styles.input}>Test</TextInput>
+            </View>
+            
+            <View style={styles.resultview}>
+                <Text>
+                    Resultaten:
+                </Text>
+            </View>
+
         </View>
     )
 }
+

@@ -44,7 +44,7 @@ export default function MainContainer() {
                 name={emailName}
                 component={EmailCheck}
                 options={{
-                tabBarLabel: 'Email',
+                tabBarLabel: 'E-mail',
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name="mail-outline" color={color} size={size} />
                 ),
@@ -65,7 +65,7 @@ export default function MainContainer() {
                 name={infoName}
                 component={InfoScreen}
                 options={{
-                tabBarLabel: 'Beveiliginstips',
+                tabBarLabel: 'Beveiligingstips',
                 tabBarIcon: ({ color, size }) => (
                     <Ionicons name="information-circle-outline" color={color} size={size} />
                 ),
