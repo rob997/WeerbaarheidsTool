@@ -10,7 +10,7 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'lightgray'
+        backgroundColor: 'lightblue'
     },
     
     titleview: {
@@ -18,7 +18,7 @@ export default StyleSheet.create({
         padding: '3%',
         height: '15%',
         width: '90%',
-        //backgroundColor: 'blue',
+        backgroundColor: 'white',
         borderColor: 'black',
         borderWidth: 1,
     },
@@ -36,7 +36,7 @@ export default StyleSheet.create({
         padding: 5,
         height: '20%',
         width: '90%',
-        //backgroundColor: 'green',
+        backgroundColor: 'white',
         borderColor: 'black',
         borderWidth: 1,
 
@@ -67,7 +67,7 @@ export default StyleSheet.create({
         padding: 5,
         height: '40%',
         width: '90%',
-        //backgroundColor: 'yellow',
+        backgroundColor: 'white',
         borderColor: 'black',
         borderWidth: 1,
     },

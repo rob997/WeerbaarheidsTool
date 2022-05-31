@@ -17,7 +17,7 @@ export default function EmailCheck({ navigation }) {
             <View style={styles.inputview}>
                 <Text>Vul hier uw email in:</Text>
                 <TextInput
-                style={styles.input}>Test</TextInput>
+                style={styles.input} placeholder='email@domain.com'></TextInput>
             </View>
             
             <View style={styles.resultview}>
