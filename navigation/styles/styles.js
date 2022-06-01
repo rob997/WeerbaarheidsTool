@@ -31,6 +31,7 @@ export default StyleSheet.create({
     },
 
     inputview:{
+        flex: 2,
         marginTop: '10%',
         marginBottom: '5%',
         padding: 5,
@@ -42,18 +43,23 @@ export default StyleSheet.create({
 
     },
 
+    inputwrapper:{
+        flexDirection: 'row',
+        marginTop: '5%',
+        height: '40%',
+    },
+
     inputtext:{
 
     },
 
     input: {
-        alignItems: 'stretch',
-        height: 40,
+        marginRight: '5%',
+        paddingLeft: 10,
+        height: 35,
         width: '75%',
-        margin: 12,
         borderColor: 'black',
         borderWidth: 1,
-        padding: 10,
         backgroundColor: 'lightgrey',
     },
 
@@ -62,11 +68,33 @@ export default StyleSheet.create({
     },
 
     resultview: {
-        flex: 1,
+        flex: 4,
         marginBottom: '5%',
         padding: 5,
         height: '40%',
         width: '90%',
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 1,
+    },
+
+    infoviewcontainer:{
+        flex: 1,
+        marginTop: '10%',
+        marginBottom: '5%',
+        height: '70%',
+        width: '90%',
+        //backgroundColor: 'white',
+        //borderColor: 'black',
+        //borderWidth: 1,
+    },
+
+    infoview: {
+        flex: 1,
+        marginTop: '5%',
+        padding: 5,
+        height: '50%',
+        width: '100%',
         backgroundColor: 'white',
         borderColor: 'black',
         borderWidth: 1,

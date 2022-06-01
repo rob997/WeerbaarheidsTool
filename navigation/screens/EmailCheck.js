@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { View, Text, TextInput, KeyboardAvoidingView} from 'react-native';
+import { View, Text, TextInput, SafeAreaView, Button, KeyboardAvoidingView} from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import styles from '../styles/styles.js'
 
 export default function EmailCheck({ navigation }) {
     return(
-        <View style={styles.mainview}>
+        <SafeAreaView style={styles.mainview}>
 
             <View style={styles.titleview}>
                 <Text
@@ -16,17 +16,26 @@ export default function EmailCheck({ navigation }) {
 
             <View style={styles.inputview}>
                 <Text>Vul hier uw email in:</Text>
-                <TextInput
-                style={styles.input} placeholder='email@domain.com'></TextInput>
+                    <View style={styles.inputwrapper}>
+                        <TextInput
+                            style={styles.input} placeholder='email@domain.com'></TextInput>
+                        <View>
+                            <Button
+                                title="Check"
+                                onPress={() => alert('Simple Button pressed')}
+                                color= 'green'
+                            />
+                        </View>
+                    </View>
             </View>
-            
+
             <View style={styles.resultview}>
                 <Text>
                     Resultaten:
                 </Text>
             </View>
 
-        </View>
+        </SafeAreaView>
     )
 }
 
