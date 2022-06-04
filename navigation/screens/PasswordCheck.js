@@ -2,9 +2,13 @@ import * as React from 'react';
 import { View, Text, TextInput, SafeAreaView, Button } from 'react-native';
 import styles from '../styles/styles.js'
 
+
+
 export default function PasswordCheck({ navigation }) {
+
     return(
         <SafeAreaView style={styles.mainview}>
+            
             <View style={styles.titleview}>
                 <Text
                     onPress={() => navigation.navigate('E-mail')}

@@ -75,7 +75,7 @@ export default function App() {
 
 
   if (checkIfFirstLaunch()){
-    return(<Welcome/>)
+    return(<MainContainer/>)
   }
   else {
     return(<MainContainer/>)

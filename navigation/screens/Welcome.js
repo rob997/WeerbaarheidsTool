@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, TextInput, Image, TouchableOpacity } from 'reac
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-export default function Welcome() {
+export default function Welcome({ navigation }) {
+    
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -35,7 +36,7 @@ export default function Welcome() {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.loginText} onPress>LOGIN</Text>
+                <Text style={styles.loginText} onPress={() => navigation.navigate('E-mail')}>LOGIN</Text>
             </TouchableOpacity>
         </View>
     )

@@ -3,15 +3,17 @@ import { View, Text } from 'react-native';
 
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Screens
+import Welcome from './screens/Welcome.js';
 import EmailCheck from './screens/EmailCheck.js';
 import PasswordCheck from './screens/PasswordCheck.js';
 import InfoScreen from './screens/InfoScreen.js';
 
+
 // Screen names
+const welcomeName = 'Welcome'
 const emailName = 'E-mail';
 const pwName = 'Wachtwoord';
 const infoName = 'Info';
@@ -21,6 +23,7 @@ const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
     return(
+
         <NavigationContainer>
             <Tab.Navigator
                 initialRouteName={emailName}
@@ -39,6 +42,19 @@ export default function MainContainer() {
                 ]         
                 }}
             >
+
+            {/*
+            <Tab.Screen
+                name={welcomeName}
+                component={Welcome}
+                options={{
+                tabBarLabel: 'Welkom',
+                tabBarIcon: ({ color, size }) => (
+                    <Ionicons name="mail-outline" color={color} size={size} />
+                ),
+                }}
+            />
+            */}
 
             <Tab.Screen
                 name={emailName}

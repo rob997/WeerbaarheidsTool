@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { View, Text, TextInput, SafeAreaView, Button, KeyboardAvoidingView} from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import styles from '../styles/styles.js'
 
+
+
 export default function EmailCheck({ navigation }) {
+
     return(
         <SafeAreaView style={styles.mainview}>
 
