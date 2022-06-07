@@ -1,86 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { 
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import MainContainer from './navigation/MainContainer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Welcome from './navigation/screens/Welcome';
+// App.js
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
 
+import HomeScreen from "./components/HomeScreen";
+import MainScreen from "./components/MainContainer";
 
-// App launched code
-const HAS_LAUNCHED = 'hasLaunched';
-
-function setAppLaunched() {
-  AsyncStorage.setItem(HAS_LAUNCHED, 'true');
-}
-
-const checkIfFirstLaunch = async () => {
-  try {
-    const hasLaunched = await AsyncStorage.getItem(HAS_LAUNCHED);
-    // If app not launched before
-    if (hasLaunched === null) {
-      setAppLaunched();
-      return true;
-    }
-    return false;
-  } catch (error) {
-    return false;
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
   }
 }
 
-
-// Tests for saving and reading data ASYNCSTORAGE
-const saveData = async (a) => {
-  try {
-    await AsyncStorage.setItem(HAS_LAUNCHED, a)
-    alert('Data successfully saved')
-  } catch (e) {
-    alert('Failed to save the data to the storage\n\n' + e)
+const StackNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Weerbaarheidstool: {
+      screen: MainScreen,
+    },
+  },
+  {
+    initialRouteName: "Home",
   }
-}
- 
-const readData = async () => {
-  try {
-    const value = await AsyncStorage.getItem(HAS_LAUNCHED);
-    alert(value);
-  } catch (e) {
-    alert('Failed to fetch the input from storage\n\n' + e);
-  }
-};
+);
 
-const removeData = async () => {
-  try {
-    const value = await AsyncStorage.removeItem(HAS_LAUNCHED);
-    alert('Successfully removed data');
-  } catch (e) {
-    alert('Failed to remove the input from storage\n\n' + e);
-  }
-};
+const AppContainer = createAppContainer(StackNavigator);
 
-
-
-// MAIN
-export default function App() {
-
-
-  //Uncomment
-  //removeData();
-  saveData('true')
-
-
-  if (checkIfFirstLaunch()){
-    return(<MainContainer/>)
-  }
-  else {
-    return(<MainContainer/>)
-  }
-
-};
-
-App();
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
