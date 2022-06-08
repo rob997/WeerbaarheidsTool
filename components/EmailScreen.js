@@ -28,7 +28,6 @@ export default class EmailScreen extends Component {
             een database.
           </Text>
         </View>
-
         <View style={styles.inputview}>
           <Text>Vul hier uw email in:</Text>
           <View style={styles.inputwrapper}>

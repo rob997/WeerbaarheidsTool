@@ -1,35 +1,17 @@
-// Homescreen.js
-import React, { Component } from "react";
-import {
-  Button,
-  View,
-  Text,
-  TextInput,
-  RadioButton,
-  SafeAreaView,
-} from "react-native";
+import React, { Component, useState } from "react";
+import { Button, View, Text, TextInput, SafeAreaView } from "react-native";
+import RadioButton from "./RadioButton";
 import styles from "./styles/styles";
 
-const radio = () => {
-  const [checked, setChecked] = React.useState("first");
-  return (
-    <View>
-      <RadioButton
-        value="first"
-        status={checked === "first" ? "checked" : "unchecked"}
-        onPress={() => setChecked("first")}
-      />
-      <RadioButton
-        value="second"
-        status={checked === "second" ? "checked" : "unchecked"}
-        onPress={() => setChecked("second")}
-      />
-    </View>
-  );
-};
-
 export default class HomeScreen extends Component {
+  constructor() {
+    super();
+  }
   render() {
+    const data = [
+      { id: 1, value: "Nee" },
+      { id: 2, value: "Ja" },
+    ];
     return (
       <SafeAreaView style={styles.mainview}>
         <View style={{ marginTop: "20%", marginBottom: "50%" }}>
@@ -49,6 +31,13 @@ export default class HomeScreen extends Component {
               N.B.{"\n"}
               Er worden geen wachtwoorden gedeeld.
             </Text>
+            <View style={styles.container}>
+              <Text style={styles.paragraph}>
+                {" "}
+                {"\n\n"}Maak hier je keuze:{" "}
+              </Text>
+              <RadioButton data={data} />
+            </View>
             <Button
               title="Verder"
               onPress={() =>
