@@ -3,18 +3,21 @@ import { View, Text, Pressable } from "react-native";
 import styles from "./styles/styles";
 
 export default function RadioButton({ data, onSelect }) {
-  const [userOption, setUserOption] = useState("Nee");
+  const [userOption, setUserOption] = useState(null);
   return (
     <View>
       {data.map((item) => {
         return (
-          <Pressable onPress={() => alert("Jouw keuze: " + item.value)}>
+          <Pressable
+            style={
+              item.value === userOption ? styles.selected : styles.unselected
+            }
+            onPress={() => setUserOption(item.value)}
+          >
             <Text style={styles.option}> {item.value}</Text>
           </Pressable>
         );
       })}
-      <Text> U heeft gekozen: {userOption}</Text>
-      <Text></Text>
     </View>
   );
 }

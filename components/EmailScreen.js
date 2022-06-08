@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import styles from "./styles/styles.js";
 
-export default function EmailScreen() {
+export default function EmailScreen({ navigation }) {
   const [email, setEmail] = useState("");
   return (
     <SafeAreaView style={styles.mainview}>

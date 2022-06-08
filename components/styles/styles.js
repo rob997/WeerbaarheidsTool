@@ -2,8 +2,7 @@ import { StyleSheet } from "react-native";
 import { back } from "react-native/Libraries/Animated/Easing";
 
 export default StyleSheet.create({
-  generalview: {},
-
+  // Main view for use on every screen
   mainview: {
     flex: 1,
     alignItems: "center",
@@ -11,6 +10,7 @@ export default StyleSheet.create({
     backgroundColor: "lightblue",
   },
 
+  // View for titles on every screen
   titleview: {
     marginTop: "5%",
     padding: "3%",
@@ -21,6 +21,7 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
 
+  // Text for titles on every screen
   title: {
     //backgroundColor: 'tomato',
     fontSize: 16,
@@ -28,6 +29,41 @@ export default StyleSheet.create({
     justifyContent: "space-between",
   },
 
+  // View for title on HomeScreen
+  hometitleview: {
+    marginTop: "5%",
+    padding: "3%",
+    height: "15%",
+    width: "90%",
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 1,
+  },
+
+  // View for content on HomeScreen
+  homeview: {
+    flex: 4,
+    marginTop: "10%",
+    marginBottom: "5%",
+    marginLeft: "10%",
+    height: "20%",
+    width: "100%",
+  },
+
+  // View for input on HomeScreen
+  homeinputview: {
+    flex: 4,
+    marginTop: "10%",
+    marginBottom: "5%",
+    padding: 20,
+    height: "20%",
+    width: "90%",
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 1,
+  },
+
+  // View for input on EmailScreen and PasswordScreen
   inputview: {
     flex: 2,
     marginTop: "10%",
@@ -40,14 +76,17 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
 
+  // View around input field on EmailScreen and PasswordScreen
   inputwrapper: {
     flexDirection: "row",
     marginTop: "5%",
     height: "40%",
   },
 
+  // Text above input field on EmailScreen and PasswordScreen
   inputtext: {},
 
+  // Input field on EmailScreen and PasswordScreen
   input: {
     marginRight: "5%",
     paddingLeft: 10,
@@ -60,6 +99,7 @@ export default StyleSheet.create({
 
   resulttext: {},
 
+  // View for results on EmailScreen and PasswordScreen
   resultview: {
     flex: 4,
     marginBottom: "5%",
@@ -71,6 +111,7 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
 
+  // View-container for all Tip views on InfoScreen
   infoviewcontainer: {
     flex: 1,
     marginTop: "10%",
@@ -82,6 +123,7 @@ export default StyleSheet.create({
     //borderWidth: 1,
   },
 
+  // View for Tip on InfoScreen
   infoview: {
     flex: 1,
     marginTop: "5%",
@@ -93,19 +135,26 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
 
+  // Radiobutton on HomeScreen
   option: {
-    fontSize: 20,
+    fontSize: 14,
     color: "white",
     textAlign: "center",
   },
+
+  // Unselected style for Radiobutton on HomeScreen
   unselected: {
-    backgroundColor: "red",
+    backgroundColor: "grey",
     margin: 5,
+    borderRadius: 10,
+    padding: 4,
   },
+
+  // Selected style for Radiobutton on HomeScreen
   selected: {
-    backgroundColor: "blue",
-    margin: 6,
-    padding: 10,
+    backgroundColor: "cornflowerblue",
+    margin: 5,
+    padding: 5,
     borderRadius: 10,
   },
 });
