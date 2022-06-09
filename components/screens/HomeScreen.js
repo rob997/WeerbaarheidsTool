@@ -1,10 +1,13 @@
 import React, { Component, useState } from "react";
 import { Button, View, Text, TextInput, SafeAreaView } from "react-native";
-import RadioButton from "./RadioButton";
-import styles from "./styles/styles";
+import RadioButton from "../components/RadioButton";
+import styles from "../styles/styles";
 
 export default function HomeScreen({ navigation }) {
-  const data = [{ value: "Nee" }, { value: "Ja" }];
+  const data = [
+    { key: 1, value: "Nee" },
+    { key: 2, value: "Ja" },
+  ];
   return (
     <SafeAreaView style={styles.mainview}>
       <View style={styles.homeview}>

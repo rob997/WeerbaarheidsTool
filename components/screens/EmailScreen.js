@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -7,10 +7,13 @@ import {
   Button,
   KeyboardAvoidingView,
 } from "react-native";
-import styles from "./styles/styles.js";
+import EmailHandler from "../scripts/EmailHandler.js";
+import styles from "../styles/styles.js";
 
 export default function EmailScreen({ navigation }) {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(null);
+  const [proceed, setProceed] = useState(false);
+
   return (
     <SafeAreaView style={styles.mainview}>
       <View style={styles.titleview}>
@@ -21,19 +24,20 @@ export default function EmailScreen({ navigation }) {
       </View>
       <View style={styles.inputview}>
         <Text>Vul hier uw email in:</Text>
-        <View style={styles.inputwrapper}>
+        <View style={styles.emailinputwrapper}>
           <TextInput
+            type="email"
             placeholder="email@domain.com"
             onChangeText={(text) => {
-              setEmail({ text });
+              setEmail(text);
             }}
-            style={styles.input}
+            style={styles.emailinput}
           ></TextInput>
           <View>
             <Button
               title="Check"
               onPress={() => {
-                console.warn(email);
+                EmailHandler(email) ? setProceed(true) : setProceed(false);
               }}
               color="green"
             />
@@ -43,6 +47,9 @@ export default function EmailScreen({ navigation }) {
 
       <View style={styles.resultview}>
         <Text>Resultaten:</Text>
+        <View style={styles.resulttextview}>
+          <Text>{proceed ? "Gelukt!" : "Mislukt!"}</Text>
+        </View>
       </View>
     </SafeAreaView>
   );

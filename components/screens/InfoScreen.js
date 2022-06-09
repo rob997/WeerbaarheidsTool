@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, SafeAreaView } from "react-native";
-import styles from "./styles/styles.js";
+import styles from "../styles/styles.js";
 
 export default function InfoScreen({ navigation }) {
   return (

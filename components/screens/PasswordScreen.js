@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
-import styles from "./styles/styles.js";
+import PasswordStrengthDisplay from "../components/PasswordStrengthDisplay.js";
+import styles from "../styles/styles.js";
 
 export default function PasswordScreen({ navigation }) {
   return (
@@ -16,12 +17,8 @@ export default function PasswordScreen({ navigation }) {
 
       <View style={styles.inputview}>
         <Text>Vul hier een wachtwoord in:</Text>
-        <View style={styles.inputwrapper}>
-          <TextInput
-            secureTextEntry={true}
-            placeholder="******"
-            style={styles.input}
-          ></TextInput>
+        <View style={styles.inputcontainer}>
+          <PasswordStrengthDisplay></PasswordStrengthDisplay>
           <View>
             <Button
               title="Check"
@@ -34,6 +31,7 @@ export default function PasswordScreen({ navigation }) {
 
       <View style={styles.resultview}>
         <Text>Resultaten:</Text>
+        <View></View>
       </View>
     </SafeAreaView>
   );

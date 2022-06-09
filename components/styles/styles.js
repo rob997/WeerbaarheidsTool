@@ -68,7 +68,7 @@ export default StyleSheet.create({
     flex: 2,
     marginTop: "10%",
     marginBottom: "5%",
-    padding: 5,
+    padding: 10,
     height: "20%",
     width: "90%",
     backgroundColor: "white",
@@ -77,21 +77,41 @@ export default StyleSheet.create({
   },
 
   // View around input field on EmailScreen and PasswordScreen
-  inputwrapper: {
+  emailinputwrapper: {
     flexDirection: "row",
     marginTop: "5%",
     height: "40%",
+  },
+
+  inputcontainer: {
+    marginTop: "5%",
+    flexDirection: "row",
+    height: "40%",
+  },
+
+  passwordinputwrapper: {
+    width: "80%",
   },
 
   // Text above input field on EmailScreen and PasswordScreen
   inputtext: {},
 
   // Input field on EmailScreen and PasswordScreen
-  input: {
+  emailinput: {
     marginRight: "5%",
     paddingLeft: 10,
     height: 35,
     width: "75%",
+    borderColor: "black",
+    borderWidth: 1,
+    backgroundColor: "lightgrey",
+  },
+
+  passwordinput: {
+    marginRight: "5%",
+    paddingLeft: 10,
+    height: 35,
+    width: "94%",
     borderColor: "black",
     borderWidth: 1,
     backgroundColor: "lightgrey",
@@ -109,6 +129,14 @@ export default StyleSheet.create({
     backgroundColor: "white",
     borderColor: "black",
     borderWidth: 1,
+  },
+
+  resulttextview: {
+    flex: 4,
+    marginBottom: "5%",
+    padding: 5,
+    height: "40%",
+    width: "90%",
   },
 
   // View-container for all Tip views on InfoScreen

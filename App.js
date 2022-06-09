@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 
-import HomeScreen from "./components/HomeScreen";
-import MainScreen from "./components/MainContainer";
+import HomeScreen from "./components/screens/HomeScreen";
+import MainScreen from "./components/screens/MainContainer";
 
 export default class App extends React.Component {
   render() {
