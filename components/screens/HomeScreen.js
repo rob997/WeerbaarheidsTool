@@ -25,11 +25,15 @@ export default function HomeScreen({ navigation }) {
           <Text style={{ fontSize: 12 }}>
             N.B.{"\n"}
             Het delen van resultaten gebeurt uitsluitend anoniem. Er worden geen
-            wachtwoorden of emailadressen opgeslagen.
+            wachtwoorden of emailadressen opgeslagen. {"\n\n"}
           </Text>
           <View style={styles.container}>
-            <Text style={styles.paragraph}> {"\n\n"}Maak hier uw keuze: </Text>
-            <RadioButton data={data} />
+            <View style={styles.passwordRadioWrapper}>
+              <Text style={{ flex: 0.6 }}>Maak hier uw keuze: </Text>
+              <View style={styles.passwordRadio}>
+                <RadioButton data={data} />
+              </View>
+            </View>
           </View>
           <Text>{"\n"}</Text>
           <Button

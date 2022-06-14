@@ -14,7 +14,7 @@ export default StyleSheet.create({
   titleview: {
     marginTop: "5%",
     padding: "3%",
-    height: "15%",
+    height: "10%",
     width: "90%",
     backgroundColor: "white",
     borderColor: "black",
@@ -64,7 +64,19 @@ export default StyleSheet.create({
   },
 
   // View for input on EmailScreen and PasswordScreen
-  inputview: {
+  emailinputview: {
+    flex: 1.5,
+    marginTop: "10%",
+    marginBottom: "5%",
+    padding: 10,
+    height: "20%",
+    width: "90%",
+    backgroundColor: "white",
+    borderColor: "black",
+    borderWidth: 1,
+  },
+
+  passwordinputview: {
     flex: 2,
     marginTop: "10%",
     marginBottom: "5%",
@@ -84,7 +96,6 @@ export default StyleSheet.create({
   },
 
   inputcontainer: {
-    marginTop: "5%",
     flexDirection: "row",
     height: "40%",
   },
@@ -117,6 +128,14 @@ export default StyleSheet.create({
     backgroundColor: "lightgrey",
   },
 
+  passwordRadioWrapper: {
+    flexDirection: "row",
+  },
+
+  passwordRadio: {
+    marginLeft: "5%",
+  },
+
   resulttext: {},
 
   // View for results on EmailScreen and PasswordScreen
@@ -136,7 +155,6 @@ export default StyleSheet.create({
     marginBottom: "5%",
     padding: 5,
     height: "40%",
-    width: "90%",
   },
 
   // View-container for all Tip views on InfoScreen

@@ -22,7 +22,7 @@ export default function EmailScreen({ navigation }) {
           database.
         </Text>
       </View>
-      <View style={styles.inputview}>
+      <View style={styles.emailinputview}>
         <Text>Vul hier uw email in:</Text>
         <View style={styles.emailinputwrapper}>
           <TextInput

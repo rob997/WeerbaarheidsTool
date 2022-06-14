@@ -3,8 +3,7 @@
     "name": "WeerbaarheidsToolv2",
     "slug": "WeerbaarheidsToolv2",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "android": { "softwareKeyboardLayoutMode": "pan" },
+    "assetBundlePatterns": ["**/*"]
   }
 }
