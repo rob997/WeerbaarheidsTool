@@ -7,12 +7,24 @@ import {
   Button,
   KeyboardAvoidingView,
 } from "react-native";
-import EmailHandler from "../scripts/EmailHandler.js";
 import styles from "../styles/styles.js";
 
 export default function EmailScreen({ navigation }) {
   const [email, setEmail] = useState(null);
   const [proceed, setProceed] = useState(false);
+
+  function EmailHandler(email) {
+    let reg =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (reg.test(email)) {
+      alert("Geldig emailadres!");
+      return true;
+    } else {
+      alert("Ongeldig email address!");
+      return false;
+    }
+  }
 
   return (
     <SafeAreaView style={styles.mainview}>

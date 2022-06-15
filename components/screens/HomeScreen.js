@@ -1,6 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, View, Text, TextInput, SafeAreaView } from "react-native";
 import RadioButton from "../components/RadioButton";
+import UserContext from "../components/thingsContext";
 import styles from "../styles/styles";
 
 export default function HomeScreen({ navigation }) {
@@ -8,6 +9,17 @@ export default function HomeScreen({ navigation }) {
     { key: 1, value: "Nee" },
     { key: 2, value: "Ja" },
   ];
+
+  const [sharesInfo, setSharesInfo] = useState("null");
+
+  const things = useContext(UserContext);
+
+  const renderThings = (things) => {
+    return things.map((thing) => {
+      return <Text key={thing.id}>{thing.name}</Text>;
+    });
+  };
+
   return (
     <SafeAreaView style={styles.mainview}>
       <View style={styles.homeview}>
@@ -31,15 +43,19 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.passwordRadioWrapper}>
               <Text style={{ flex: 0.6 }}>Maak hier uw keuze: </Text>
               <View style={styles.passwordRadio}>
-                <RadioButton data={data} />
+                <RadioButton
+                  data={data}
+                  onSelect={(value) => setSharesInfo(value)}
+                />
               </View>
             </View>
           </View>
-          <Text>{"\n"}</Text>
+          <Text>{"U heeft gekozen voor: " + sharesInfo + "\n"}</Text>
           <Button
             title="Verder"
             onPress={() => navigation.navigate("Weerbaarheidstool")}
           />
+          {renderThings(things)}
         </View>
       </View>
     </SafeAreaView>

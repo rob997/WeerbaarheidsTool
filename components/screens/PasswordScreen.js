@@ -1,4 +1,4 @@
-import React, { useState, useRef, forwardRef } from "react";
+import React, { useState, useRef, forwardRef, useEffect } from "react";
 import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
 import scorePassword from "react-native-password-strength-meter/src/utils/score-password.js";
 import PasswordStrengthDisplay from "../components/PasswordStrengthDisplay.js";
@@ -13,9 +13,26 @@ export default function PasswordScreen({ navigation }) {
 
   const [score, setScore] = useState(null);
   const [renderResults, setRenderResults] = useState(false);
-  const [recycles, setRecycles] = useState("null");
+  const [recycles, setRecycles] = useState(null);
+  const [previousRecycles, setPreviousRecycles] = useState(null);
 
   const childRef = useRef();
+
+  function recycleInfo() {
+    if (previousRecycles === "Ja") {
+      return (
+        <Text>
+          {"\n"}Verder geeft u aan dat wachtwoorden hergebruikt. Dit is erg
+          gevaarlijk, zelfs met een sterk wachtwoord. Als een slecht beveiligde
+          database waar u staat ingeschreven wordt gehackt bent u meerdere
+          accounts kwijt!
+        </Text>
+      );
+    } else
+      return (
+        <Text>{"\n"}Verder hergebruikt u geen wachtwoorden. Geweldig!</Text>
+      );
+  }
 
   function assessPwStrength() {
     let res = "";
@@ -61,6 +78,7 @@ export default function PasswordScreen({ navigation }) {
           Uw score is: {score} / 100.
         </Text>
         <Text>{assessPwStrength()}</Text>
+        <Text>{recycleInfo()}</Text>
         <Text>
           {"\n"}
           Voor het maken van een sterk wachtwoord is het belangrijk dat u een
@@ -86,7 +104,7 @@ export default function PasswordScreen({ navigation }) {
         <View style={styles.passwordRadioWrapper}>
           <Text>Hergebruikt u wel eens wachtwoorden?</Text>
           <View style={styles.passwordRadio}>
-            <RadioButton data={data} />
+            <RadioButton data={data} onSelect={(value) => setRecycles(value)} />
           </View>
         </View>
         <Text>Vul hier een wachtwoord in:</Text>
@@ -96,12 +114,15 @@ export default function PasswordScreen({ navigation }) {
             <Button
               title="Check"
               onPress={() => {
-                // Haal score op van child object (PasswordStrengthDisplay)
-                setScore(childRef.current.getScore());
-                // Wanneer de score opgehaald is en geen 0 is, render de resultaten
-                childRef.current.getScore() > 0
-                  ? setRenderResults(true)
-                  : alert("Voer tenminste vijf karakters in");
+                if (recycles !== null) {
+                  setPreviousRecycles(recycles);
+                  // Haal score op van child object (PasswordStrengthDisplay)
+                  setScore(childRef.current.getScore());
+                  // Wanneer de score opgehaald is en geen 0 is, render de resultaten
+                  childRef.current.getScore() > 0
+                    ? setRenderResults(true)
+                    : alert("Voer tenminste vijf karakters in");
+                } else alert("Maak een keuze alstublieft");
               }}
               color="green"
             />

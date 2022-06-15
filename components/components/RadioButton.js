@@ -4,6 +4,12 @@ import styles from "../styles/styles";
 
 export default function RadioButton({ data, onSelect }) {
   const [userOption, setUserOption] = useState(null);
+
+  const selectHandler = (value) => {
+    onSelect(value);
+    setUserOption(value);
+  };
+
   return (
     <View>
       {data.map((item) => {
@@ -12,7 +18,7 @@ export default function RadioButton({ data, onSelect }) {
             style={
               item.value === userOption ? styles.selected : styles.unselected
             }
-            onPress={() => setUserOption(item.value)}
+            onPress={() => selectHandler(item.value)}
           >
             <Text style={styles.option}> {item.value}</Text>
           </Pressable>

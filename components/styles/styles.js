@@ -52,11 +52,10 @@ export default StyleSheet.create({
 
   // View for input on HomeScreen
   homeinputview: {
-    flex: 4,
     marginTop: "10%",
     marginBottom: "5%",
     padding: 20,
-    height: "20%",
+    height: "50%",
     width: "90%",
     backgroundColor: "white",
     borderColor: "black",
@@ -134,6 +133,7 @@ export default StyleSheet.create({
 
   passwordRadio: {
     marginLeft: "5%",
+    width: "20%",
   },
 
   resulttext: {},

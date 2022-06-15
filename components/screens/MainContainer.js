@@ -12,58 +12,56 @@ import InfoScreen from "./InfoScreen";
 const tabBarIconColor = "grey";
 const tabBarIconSize = 20;
 
-export default class MainScreen extends React.Component {
-  render() {
-    return <MainContainer />;
-  }
+export default function MainScreen() {
+  const TabNavigator = createBottomTabNavigator(
+    {
+      Email: {
+        screen: EmailScreen,
+        navigationOptions: {
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="mail-outline"
+              color={tabBarIconColor}
+              size={tabBarIconSize}
+            />
+          ),
+        },
+      },
+      Wachtwoord: {
+        screen: PasswordScreen,
+        navigationOptions: {
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="key-outline"
+              color={tabBarIconColor}
+              size={tabBarIconSize}
+            />
+          ),
+        },
+      },
+      Info: {
+        screen: InfoScreen,
+        navigationOptions: {
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="information-circle-outline"
+              color={tabBarIconColor}
+              size={tabBarIconSize}
+            />
+          ),
+        },
+      },
+    },
+    {
+      initialRouteName: "Email",
+      tabBarOptions: {
+        activeTintColor: "blue",
+        inactiveTintColor: "grey",
+      },
+    }
+  );
+
+  const MainContainer = createAppContainer(TabNavigator);
+
+  return <MainContainer />;
 }
-
-const TabNavigator = createBottomTabNavigator(
-  {
-    Email: {
-      screen: EmailScreen,
-      navigationOptions: {
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons
-            name="mail-outline"
-            color={tabBarIconColor}
-            size={tabBarIconSize}
-          />
-        ),
-      },
-    },
-    Wachtwoord: {
-      screen: PasswordScreen,
-      navigationOptions: {
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons
-            name="key-outline"
-            color={tabBarIconColor}
-            size={tabBarIconSize}
-          />
-        ),
-      },
-    },
-    Info: {
-      screen: InfoScreen,
-      navigationOptions: {
-        tabBarIcon: ({ color, size }) => (
-          <Ionicons
-            name="information-circle-outline"
-            color={tabBarIconColor}
-            size={tabBarIconSize}
-          />
-        ),
-      },
-    },
-  },
-  {
-    initialRouteName: "Email",
-    tabBarOptions: {
-      activeTintColor: "blue",
-      inactiveTintColor: "grey",
-    },
-  }
-);
-
-const MainContainer = createAppContainer(TabNavigator);
