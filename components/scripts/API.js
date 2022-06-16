@@ -1,13 +1,54 @@
-const express = require("express");
-const app = express();
-const rp = require("request-promise");
-const $ = require("cheerio");
-app.use(express.json());
+import React, { useEffect, useState } from "react";
+import { FlatList, Text, View } from "react-native";
+import { key } from "./APIkey";
 
-app.get("/", (req, res) => {
-  res.send("Hello !!!");
-});
+export default function GetEmailBreaches(value) {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  console.log(data);
 
-const port = process.env.PORT || 3000;
+  useEffect(() => {
+    fetch(
+      //"https://raw.githubusercontent.com/adhithiravi/React-Hooks-Examples/master/testAPI.json",
+      `https://haveibeenpwned.com/api/v3/breachedaccount/${value.email}`,
+      {
+        method: "GET",
+        headers: { "hibp-api-key": key },
+      }
+    )
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, []);
 
-app.listen(port, () => console.log(`http://localhost:${port}`));
+  return (
+    <View style={{ flex: 1, padding: 24 }}>
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 14,
+              color: "green",
+            }}
+          >
+            Gevonden breaches:
+          </Text>
+          <FlatList
+            data={data}
+            //keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => <Text>{item.Name}</Text>}
+          />
+        </View>
+      )}
+    </View>
+  );
+}

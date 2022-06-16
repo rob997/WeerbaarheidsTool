@@ -1,24 +1,18 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  SafeAreaView,
-  Button,
-  KeyboardAvoidingView,
-} from "react-native";
+import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
+import GetEmailBreaches from "../scripts/API";
 import styles from "../styles/styles.js";
 
 export default function EmailScreen({ navigation }) {
   const [email, setEmail] = useState(null);
   const [proceed, setProceed] = useState(false);
+  const [loadEmail, setLoadEmail] = useState(null);
 
   function EmailHandler(email) {
     let reg =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (reg.test(email)) {
-      alert("Geldig emailadres!");
       return true;
     } else {
       alert("Ongeldig email address!");
@@ -49,7 +43,10 @@ export default function EmailScreen({ navigation }) {
             <Button
               title="Check"
               onPress={() => {
-                EmailHandler(email) ? setProceed(true) : setProceed(false);
+                // Valid email ? Proceed, else don't proceed
+                EmailHandler(email)
+                  ? setProceed(true) && setLoadEmail(email)
+                  : setProceed(false);
               }}
               color="green"
             />
@@ -60,7 +57,12 @@ export default function EmailScreen({ navigation }) {
       <View style={styles.resultview}>
         <Text>Resultaten:</Text>
         <View style={styles.resulttextview}>
-          <Text>{proceed ? "Gelukt!" : "Mislukt!"}</Text>
+          {/* Ready to proceed? Show results. */}
+          {proceed ? (
+            <GetEmailBreaches email={email} />
+          ) : (
+            <Text>Voer een (geldig) emailadres in.</Text>
+          )}
         </View>
       </View>
     </SafeAreaView>

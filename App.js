@@ -1,22 +1,27 @@
 // App.js
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, { useState } from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-import { UserContextProvider } from "./components/components/thingsContext";
+import { UserContextProvider } from "./components/components/UserContext";
 
 import HomeScreen from "./components/screens/HomeScreen";
 import MainScreen from "./components/screens/MainContainer";
 
 export default function App() {
-  // pretend we are fetching these 'things'
-  const things = [
-    { id: 1, name: "thing 1", length: 5 },
-    { id: 2, name: "thing 2", length: 2 },
-    { id: 3, name: "thing 3", length: 6 },
-    { id: 4, name: "thing 4", length: 10 },
-    { id: 5, name: "thing 5", length: 1 },
+  const [id, setid] = useState(1);
+  const [sharesInfo, setsharesInfo] = useState(111);
+
+  const userData = [
+    { id: 1, value: id },
+    { id: 2, value: sharesInfo },
+    { id: 3, value: "thing 3" },
+    { id: 4, value: "thing 4" },
   ];
+
+  const toggleSharesInfo = () => {
+    sharesInfo === "Nee" ? setsharesInfo("Ja") : setsharesInfo("Nee");
+    return sharesInfo;
+  };
 
   const StackNavigator = createStackNavigator(
     {
@@ -34,7 +39,7 @@ export default function App() {
   const AppContainer = createAppContainer(StackNavigator);
 
   return (
-    <UserContextProvider value={things}>
+    <UserContextProvider value={userData}>
       <AppContainer />
     </UserContextProvider>
   );
