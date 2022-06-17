@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
-import GetEmailBreaches from "../scripts/API";
+import EmailBreaches from "../scripts/API";
 import ExpressAPI from "../scripts/ExpressAPI";
 import styles from "../styles/styles.js";
 
@@ -57,19 +57,31 @@ export default function EmailScreen({ navigation }) {
       </View>
 
       <View style={styles.resultview}>
-        <Text>Resultaten:</Text>
         <View style={styles.resulttextview}>
           {/* Ready to proceed? Show results. */}
           {proceed ? (
-            <GetEmailBreaches email={email} />
+            <EmailBreaches email={email} />
           ) : (
             <Text>Voer een (geldig) emailadres in.</Text>
           )}
-
-          {
-            //<ExpressAPI />
-          }
         </View>
+
+        {proceed ? (
+          <View>
+            <Text>
+              Wanneer uw emailadres wordt gevonden in één of meerdere
+              datalekken, dan zijn de wachtwoorden waarmee u staat ingeschreven
+              openbaar! {"\n"}
+            </Text>
+            <Text>
+              Dit geld ook voor elk ander account waar u hetzelfde wachtwoord
+              gebruikt. {"\n"}
+            </Text>
+            <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+              Verander deze wachtwoorden zo snel mogelijk!
+            </Text>
+          </View>
+        ) : null}
       </View>
     </SafeAreaView>
   );

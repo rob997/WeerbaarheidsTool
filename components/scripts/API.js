@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Text, View } from "react-native";
 import { key } from "./APIkey";
 
-export default function GetEmailBreaches(value) {
+export default function EmailBreaches(value) {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   //console.log(data);
@@ -25,7 +25,7 @@ export default function GetEmailBreaches(value) {
   }, []);
 
   return (
-    <View style={{ flex: 1, padding: 24 }}>
+    <View style={{ flex: 1 }}>
       {isLoading ? (
         <Text>Laden...</Text>
       ) : (
@@ -38,13 +38,15 @@ export default function GetEmailBreaches(value) {
         >
           <Text
             style={{
-              fontSize: 14,
-              color: "green",
+              fontWeight: "bold",
+              fontSize: 15,
+              paddingBottom: 8,
             }}
           >
-            Gevonden breaches:
+            Gevonden datalekken:
           </Text>
-          {console.log(data)}
+          {data.length === 0 ? <Text>Niets gevonden!</Text> : null}
+          {console.log(data.length)}
           <FlatList
             data={data}
             renderItem={({ item }) => <Text>{item.Name}</Text>}

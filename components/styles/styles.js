@@ -62,9 +62,9 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
 
-  // View for input on EmailScreen and PasswordScreen
+  // View for input on EmailScreen
   emailinputview: {
-    flex: 1.5,
+    flex: 1,
     marginTop: "10%",
     marginBottom: "5%",
     padding: 10,
@@ -75,6 +75,7 @@ export default StyleSheet.create({
     borderWidth: 1,
   },
 
+  // View for input on PasswordScreen
   passwordinputview: {
     flex: 2,
     marginTop: "10%",

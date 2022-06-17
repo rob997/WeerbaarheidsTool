@@ -55,7 +55,7 @@ export default function MainScreen() {
     {
       initialRouteName: "Email",
       tabBarOptions: {
-        activeTintColor: "blue",
+        activeTintColor: "black",
         inactiveTintColor: "grey",
       },
     }
