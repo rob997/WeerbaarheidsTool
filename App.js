@@ -9,18 +9,27 @@ import MainScreen from "./components/screens/MainContainer";
 
 export default function App() {
   const [id, setid] = useState(1);
-  const [sharesInfo, setsharesInfo] = useState(111);
+  const [sharesinfo, setsharesinfo] = useState("Nee");
 
-  const userData = [
-    { id: 1, value: id },
-    { id: 2, value: sharesInfo },
-    { id: 3, value: "thing 3" },
-    { id: 4, value: "thing 4" },
-  ];
+  const toggleSharesInfo = (value) => {
+    console.log("runt goed " + value);
+    //sharesInfo === "Nee" ? setsharesInfo("Ja") : setsharesInfo("Nee");
+    //return sharesInfo;
+  };
 
-  const toggleSharesInfo = () => {
-    sharesInfo === "Nee" ? setsharesInfo("Ja") : setsharesInfo("Nee");
-    return sharesInfo;
+  const userData = {
+    data: [
+      { id: 1, value: id },
+      { id: 2, value: sharesinfo },
+    ],
+    functions: {
+      setSharesInfo: (value) => {
+        return setsharesinfo(value);
+      },
+      setId: (value) => {
+        return setid(value);
+      },
+    },
   };
 
   const StackNavigator = createStackNavigator(

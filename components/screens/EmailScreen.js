@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
 import GetEmailBreaches from "../scripts/API";
+import ExpressAPI from "../scripts/ExpressAPI";
 import styles from "../styles/styles.js";
 
 export default function EmailScreen({ navigation }) {
@@ -36,6 +37,7 @@ export default function EmailScreen({ navigation }) {
             placeholder="email@domain.com"
             onChangeText={(text) => {
               setEmail(text);
+              setProceed(false);
             }}
             style={styles.emailinput}
           ></TextInput>
@@ -63,6 +65,10 @@ export default function EmailScreen({ navigation }) {
           ) : (
             <Text>Voer een (geldig) emailadres in.</Text>
           )}
+
+          {
+            //<ExpressAPI />
+          }
         </View>
       </View>
     </SafeAreaView>

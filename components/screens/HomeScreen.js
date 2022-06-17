@@ -4,6 +4,8 @@ import RadioButton from "../components/RadioButton";
 import UserContext from "../components/UserContext";
 import styles from "../styles/styles";
 
+export let wantsToShare = false;
+
 export default function HomeScreen({ navigation }) {
   // Options for the radio buttons
   const data = [
@@ -11,7 +13,7 @@ export default function HomeScreen({ navigation }) {
     { key: 2, value: "Ja" },
   ];
 
-  const [sharesInfo, setSharesInfo] = useState("null");
+  const [sharesInfo, setSharesInfo] = useState(null);
 
   const userData = useContext(UserContext);
 
@@ -21,6 +23,16 @@ export default function HomeScreen({ navigation }) {
       return <Text key={thing.id}>{thing.value}</Text>;
     });
   };
+
+  const getShareState = (things) => {
+    console.log(things[1]["value"]);
+  };
+
+  //userData?.functions?.asdf("Nee");
+
+  function updateContext(value) {
+    userData?.functions?.setSharesInfo(value);
+  }
 
   return (
     <SafeAreaView style={styles.mainview}>
@@ -45,16 +57,42 @@ export default function HomeScreen({ navigation }) {
             <View style={styles.passwordRadioWrapper}>
               <Text style={{ flex: 0.6 }}>Maak hier uw keuze: </Text>
               <View style={styles.passwordRadio}>
-                <RadioButton data={data} onSelect={() => {}} />
+                <RadioButton
+                  data={data}
+                  onSelect={(value) => setSharesInfo(value)}
+                />
               </View>
             </View>
           </View>
-          <Text>{"U heeft gekozen voor: " + sharesInfo + "\n"}</Text>
+          <Text></Text>
+          {sharesInfo === null ? (
+            <Text>Maak een keuze alstublieft</Text>
+          ) : (
+            <Text>U heeft gekozen voor: {sharesInfo}</Text>
+          )}
+
           <Button
             title="Verder"
-            onPress={() => navigation.navigate("Weerbaarheidstool")}
+            //onPress={() => navigation.navigate("Weerbaarheidstool")}
+            onPress={() => {
+              if (sharesInfo !== null) {
+                wantsToShare = sharesInfo;
+                navigation.navigate("Weerbaarheidstool");
+                console.log(sharesInfo);
+              } else {
+                alert("Maak een keuze alstublieft");
+              }
+            }}
           />
-          {renderThings(userData)}
+          {
+            //getShareState(userData?.data)
+          }
+          {
+            //userData
+            //? renderThings(userData?.data)
+            //: ? console.log(userData.data)
+            //  null
+          }
         </View>
       </View>
     </SafeAreaView>
