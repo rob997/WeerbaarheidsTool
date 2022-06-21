@@ -3,6 +3,8 @@ import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
 import scorePassword from "react-native-password-strength-meter/src/utils/score-password.js";
 import PasswordStrengthDisplay from "../components/PasswordStrengthDisplay.js";
 import RadioButton from "../components/RadioButton.js";
+import AddPasswordInfo from "../scripts/AddPasswordInfo.js";
+import { id, wantsToShare } from "./HomeScreen";
 import styles from "../styles/styles.js";
 
 export default function PasswordScreen({ navigation }) {
@@ -17,6 +19,12 @@ export default function PasswordScreen({ navigation }) {
   const [previousRecycles, setPreviousRecycles] = useState(null);
 
   const childRef = useRef();
+
+  function addPasswordToDB(score) {
+    if (wantsToShare === "Ja") {
+      AddPasswordInfo(id, score, recycles);
+    }
+  }
 
   function recycleInfo() {
     if (previousRecycles === "Ja") {
@@ -119,10 +127,26 @@ export default function PasswordScreen({ navigation }) {
                   // Haal score op van child object (PasswordStrengthDisplay)
                   setScore(childRef.current.getScore());
                   // Wanneer de score opgehaald is en geen 0 is, render de resultaten
-                  childRef.current.getScore() > 0
-                    ? setRenderResults(true)
-                    : alert("Voer tenminste vijf karakters in");
-                } else alert("Maak een keuze alstublieft");
+                  if (childRef.current.getScore() > 0) {
+                    console.log(
+                      "Child score is: " + childRef.current.getScore()
+                    );
+                    setRenderResults(true);
+                    addPasswordToDB(childRef.current.getScore());
+                    console.log(
+                      "Recycles: " +
+                        recycles +
+                        " score: " +
+                        childRef.current.getScore() +
+                        " prevRecycles: " +
+                        previousRecycles
+                    );
+                  } else {
+                    alert("Voer tenminste vijf karakters in.");
+                  }
+                } else {
+                  ("Maak een keuze alstublieft.");
+                }
               }}
               color="green"
             />

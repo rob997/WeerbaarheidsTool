@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, SafeAreaView, Button } from "react-native";
 import EmailBreaches from "../scripts/API";
-import ExpressAPI from "../scripts/ExpressAPI";
+import AddEmailInfo from "../scripts/AddEmailInfo";
 import styles from "../styles/styles.js";
+import { id, wantsToShare } from "./HomeScreen";
 
 export default function EmailScreen({ navigation }) {
   const [email, setEmail] = useState(null);

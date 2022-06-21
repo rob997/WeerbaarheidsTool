@@ -1,10 +1,20 @@
 import React, { useContext, useState, dispatch } from "react";
 import { Button, View, Text, TextInput, SafeAreaView } from "react-native";
+import { set } from "react-native-reanimated";
 import RadioButton from "../components/RadioButton";
 import UserContext from "../components/UserContext";
+import AddUser from "../scripts/AddUser";
+import getUserCount from "../scripts/GetUserCount";
 import styles from "../styles/styles";
 
+export let id = null;
 export let wantsToShare = false;
+
+function setId() {
+  getUserCount().then((response) => {
+    id = response[0].count + 1;
+  });
+}
 
 export default function HomeScreen({ navigation }) {
   // Options for the radio buttons
@@ -34,6 +44,11 @@ export default function HomeScreen({ navigation }) {
     userData?.functions?.setSharesInfo(value);
   }
 
+  function setStates(value) {
+    setSharesInfo(value);
+    setId();
+  }
+
   return (
     <SafeAreaView style={styles.mainview}>
       <View style={styles.homeview}>
@@ -59,7 +74,7 @@ export default function HomeScreen({ navigation }) {
               <View style={styles.passwordRadio}>
                 <RadioButton
                   data={data}
-                  onSelect={(value) => setSharesInfo(value)}
+                  onSelect={(value) => setStates(value)}
                 />
               </View>
             </View>
@@ -70,15 +85,15 @@ export default function HomeScreen({ navigation }) {
           ) : (
             <Text>U heeft gekozen voor: {sharesInfo}</Text>
           )}
+          <Text></Text>
 
           <Button
             title="Verder"
-            //onPress={() => navigation.navigate("Weerbaarheidstool")}
             onPress={() => {
               if (sharesInfo !== null) {
                 wantsToShare = sharesInfo;
+                AddUser(id, wantsToShare);
                 navigation.navigate("Weerbaarheidstool");
-                console.log(sharesInfo);
               } else {
                 alert("Maak een keuze alstublieft");
               }

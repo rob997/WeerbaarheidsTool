@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
-import { key } from "./APIkey";
+import { FlatList, Text, View, Linking } from "react-native";
+import { id, wantsToShare } from "../screens/HomeScreen";
+import AddEmailInfo from "./AddEmailInfo";
 
 export default function EmailBreaches(value) {
   const [isLoading, setLoading] = useState(true);
@@ -11,10 +12,10 @@ export default function EmailBreaches(value) {
     fetch(
       //"https://raw.githubusercontent.com/adhithiravi/React-Hooks-Examples/master/testAPI.json",
       //`https://haveibeenpwned.com/api/v3/breachedaccount/${value.email}`,
-      `http://51.11.106.178:3000/getEmailBreaches?email=${value.email}`,
+      //`http://51.11.106.178:3000/getEmailBreaches?email=${value.email}`,
+      `http://192.168.1.210:3000/getEmailBreaches?email=${value.email}`,
       {
         method: "GET",
-        headers: { "hibp-api-key": key },
       }
     )
       .then((response) => response.json())
@@ -23,6 +24,12 @@ export default function EmailBreaches(value) {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, []);
+
+  function addEmailToDb(datalength) {
+    if (wantsToShare === "Ja") {
+      AddEmailInfo(id, datalength);
+    }
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -46,11 +53,18 @@ export default function EmailBreaches(value) {
             Gevonden datalekken:
           </Text>
           {data.length === 0 ? <Text>Niets gevonden!</Text> : null}
-          {console.log(data.length)}
+          {addEmailToDb(data.length)}
+          {/*console.log(data.length)*/}
           <FlatList
             data={data}
             renderItem={({ item }) => <Text>{item.Name}</Text>}
           />
+          <Text
+            style={{ color: "mediumblue" }}
+            onPress={() => Linking.openURL("https://haveibeenpwned.com/")}
+          >
+            Bron: https://haveibeenpwned.com/
+          </Text>
         </View>
       )}
     </View>

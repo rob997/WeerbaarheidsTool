@@ -1,0 +1,30 @@
+//import { application } from "express";
+//import React, { useState, useEffect } from "react";
+import { Text, View, StyleSheet, Alert } from "react-native";
+
+export default function AddUser(id, sharesInfo) {
+  const requestOptions = {
+    method: "POST",
+    headers: { Accept: "application.json", "Content-Type": "application/json" },
+    body: JSON.stringify({ id: id, sharesInfo: sharesInfo }),
+  };
+
+  const sendPost = async () => {
+    try {
+      await fetch("http://192.168.1.210:3000/addUser", requestOptions).then(
+        (response) => {
+          response.json().then((data) => {
+            console.log(response);
+          });
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  console.log(
+    "Tried to run AddUser with id: " + id + " and sharesInfo: " + sharesInfo
+  );
+  sendPost();
+}
