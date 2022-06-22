@@ -10,7 +10,7 @@ export default StyleSheet.create({
     backgroundColor: "lightblue",
   },
 
-  // View for titles on every screen
+  // View for titles every screen
   titleview: {
     marginTop: "5%",
     padding: "3%",
@@ -161,7 +161,7 @@ export default StyleSheet.create({
   // View-container for all Tip views on InfoScreen
   infoviewcontainer: {
     flex: 1,
-    marginTop: "10%",
+    marginTop: "5%",
     marginBottom: "5%",
     height: "70%",
     width: "90%",

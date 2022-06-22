@@ -1,7 +1,5 @@
 // Example GET method implementation:
-export default async function getUserCount(
-  url = "http://192.168.1.210:3000/userCount"
-) {
+export default async function getUserCount(url = `${ipadress}/userCount`) {
   // Default options are marked with *
   const response = await fetch(url, {
     method: "GET", // *GET, POST, PUT, DELETE, etc.

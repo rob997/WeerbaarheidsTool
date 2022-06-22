@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Text, View, Linking } from "react-native";
 import { id, wantsToShare } from "../screens/HomeScreen";
 import AddEmailInfo from "./AddEmailInfo";
+import ipadress from "./config.js";
 
 export default function EmailBreaches(value) {
   const [isLoading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ export default function EmailBreaches(value) {
       //"https://raw.githubusercontent.com/adhithiravi/React-Hooks-Examples/master/testAPI.json",
       //`https://haveibeenpwned.com/api/v3/breachedaccount/${value.email}`,
       //`http://51.11.106.178:3000/getEmailBreaches?email=${value.email}`,
-      `http://192.168.1.210:3000/getEmailBreaches?email=${value.email}`,
+      `${ipadress}/getEmailBreaches?email=${value.email}`,
       {
         method: "GET",
       }

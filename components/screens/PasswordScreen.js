@@ -31,9 +31,8 @@ export default function PasswordScreen({ navigation }) {
       return (
         <Text>
           {"\n"}Verder geeft u aan dat wachtwoorden hergebruikt. Dit is erg
-          gevaarlijk, zelfs met een sterk wachtwoord. Als een slecht beveiligde
-          database waar u staat ingeschreven wordt gehackt bent u meerdere
-          accounts kwijt!
+          gevaarlijk, zelfs met een sterk wachtwoord. Als een website waar u
+          staat ingeschreven gehackt wordt bent u meerdere accounts kwijt!
         </Text>
       );
     } else
@@ -91,7 +90,12 @@ export default function PasswordScreen({ navigation }) {
           {"\n"}
           Voor het maken van een sterk wachtwoord is het belangrijk dat u een
           mix van hoofdletters, getallen en speciale tekens gebruikt. Gebruik
-          geen
+          geen woorden uit het woordenboek.
+        </Text>
+        <Text>
+          {"\n"}
+          Hoe langer een wachtwoord is, hoe lastiger het te kraken valt. Het
+          advies hiervoor is minimaal 14 tekens.
         </Text>
       </View>
     );
@@ -133,14 +137,6 @@ export default function PasswordScreen({ navigation }) {
                     );
                     setRenderResults(true);
                     addPasswordToDB(childRef.current.getScore());
-                    console.log(
-                      "Recycles: " +
-                        recycles +
-                        " score: " +
-                        childRef.current.getScore() +
-                        " prevRecycles: " +
-                        previousRecycles
-                    );
                   } else {
                     alert("Voer tenminste vijf karakters in.");
                   }

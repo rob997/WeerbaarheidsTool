@@ -1,3 +1,5 @@
+import ipadress from "./config.js";
+
 export default function AddEmailInfo(id, hits) {
   const requestOptions = {
     method: "POST",
@@ -7,14 +9,11 @@ export default function AddEmailInfo(id, hits) {
 
   const sendPost = async () => {
     try {
-      await fetch("http://192.168.1.210:3000/addEmail", requestOptions).then(
-        (response) => {
-          response.json().then((data) => {
-            Alert.alert("Post created at : ", data.createdAt);
-            console.log(response);
-          });
-        }
-      );
+      await fetch(`${ipadress}/addEmail`, requestOptions).then((response) => {
+        response.json().then((data) => {
+          console.log(response);
+        });
+      });
     } catch (error) {
       console.error(error);
     }

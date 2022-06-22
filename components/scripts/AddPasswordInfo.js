@@ -1,3 +1,5 @@
+import ipadress from "./config.js";
+
 export default function AddPasswordInfo(id, strength, recyclesPW) {
   const requestOptions = {
     method: "POST",
@@ -11,10 +13,9 @@ export default function AddPasswordInfo(id, strength, recyclesPW) {
 
   const sendPost = async () => {
     try {
-      await fetch("http://192.168.1.210:3000/addPassword", requestOptions).then(
+      await fetch(`${ipadress}/addPassword`, requestOptions).then(
         (response) => {
           response.json().then((data) => {
-            Alert.alert("Post created at : ", data.createdAt);
             console.log(response);
           });
         }

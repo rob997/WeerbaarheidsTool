@@ -11,13 +11,12 @@ export default function AddUser(id, sharesInfo) {
 
   const sendPost = async () => {
     try {
-      await fetch("http://192.168.1.210:3000/addUser", requestOptions).then(
-        (response) => {
-          response.json().then((data) => {
-            console.log(response);
-          });
-        }
-      );
+      await fetch(`${ipadress}/addUser`, requestOptions).then((response) => {
+        response.json().then((data) => {
+          console.log(data);
+          console.log(response);
+        });
+      });
     } catch (error) {
       console.error(error);
     }
