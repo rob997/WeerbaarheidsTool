@@ -53,13 +53,8 @@ export default function PasswordScreen({ navigation }) {
       res =
         "Een score van " +
         score +
-        " punten is erg goed. Uw wachtwoord is veilig, maar misschien kan het nog veiliger.";
-    } else if (score >= 40) {
-      res =
-        "Een score van " +
-        score +
         " punten is goed. Uw wachtwoord is redelijk veilig, maar het kan nog veiliger.";
-    } else if (score >= 30) {
+    } else if (score >= 40) {
       res =
         "Een score van " +
         score +
