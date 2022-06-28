@@ -30,7 +30,7 @@ export default function PasswordScreen({ navigation }) {
     if (previousRecycles === "Ja") {
       return (
         <Text>
-          {"\n"}Verder geeft u aan dat wachtwoorden hergebruikt. Dit is erg
+          {"\n"}Verder geeft u aan dat u wachtwoorden hergebruikt. Dit is erg
           gevaarlijk, zelfs met een sterk wachtwoord. Als een website waar u
           staat ingeschreven gehackt wordt bent u meerdere accounts kwijt!
         </Text>
@@ -103,7 +103,8 @@ export default function PasswordScreen({ navigation }) {
           onPress={() => navigation.navigate("E-mail")}
           style={styles.title}
         >
-          Wachtwoord Scherm
+          Op deze pagina kunt u wachtwoordsterktes controleren en hier advies
+          over opvragen.
         </Text>
       </View>
 
