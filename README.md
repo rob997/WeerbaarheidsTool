@@ -1,5 +1,5 @@
 # WeerbaarheidsTool
 Security awareness tool
 
-Bij deze app hoort een back-end server die wordt gehost in een private repository
-Zorg dat het ipadres in config.js naar deze server verwijst en dat de nodejs express server draait.
+Bij deze app hoort een nodejs express back-end server die wordt gehost in een private repository.
+Zorg dat deze server draait en het ipadres in scripts/config.js van deze applicatie hiernaar verwijst.
